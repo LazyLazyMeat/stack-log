@@ -1,0 +1,14 @@
+name: google_cloud_log_parser
+description: Parser for Google Cloud Logs with syntax highlighting
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+executables:
+  gcloud_log_parser: parser
+  gcloud_log_highlighter: highlighter
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0

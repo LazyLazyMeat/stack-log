@@ -1,0 +1,17 @@
+# Dart
+.dart_tool/
+.idea/
+.packages
+.pub-cache/
+.pub/
+build/
+pubspec.lock
+input.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files
+output/
+*.log
