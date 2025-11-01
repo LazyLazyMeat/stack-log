@@ -1,3 +1,6 @@
+// lib/some_helper.dart
+// GPL-3.0 License - See LICENSE file for details
+
 library google_cloud_log_parser.src.config;
 
 import 'dart:io';
