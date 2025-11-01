@@ -1,7 +1,7 @@
 // lib/some_helper.dart
 // GPL-3.0 License - See LICENSE file for details
 
-library google_cloud_log_parser.src.color_output;
+library stack_log.src.color_output;
 
 import 'dart:io';
 

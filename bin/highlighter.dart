@@ -1,5 +1,4 @@
 #!/usr/bin/env dart
-
 /*
  * highlighter.dart - A command-line tool for highlighting parsed logs.
  *

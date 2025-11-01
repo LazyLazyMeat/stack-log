@@ -1,0 +1,75 @@
+[
+  {
+    "severity": "INFO",
+    "timestamp": "2023-10-05T12:00:00.123Z",
+    "httpRequest": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    },
+    "textPayload": "User authentication successful for user@example.com",
+    "labels": {
+      "service": "auth-service",
+      "version": "v1.2.3"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "auth-api",
+        "location": "us-central1"
+      }
+    }
+  },
+  {
+    "severity": "ERROR",
+    "timestamp": "2023-10-05T12:01:30.456Z",
+    "httpRequest": {
+      "userAgent": "curl/7.68.0"
+    },
+    "jsonPayload": {
+      "message": "Database connection timeout",
+      "errorCode": "DB_CONN_001",
+      "details": {
+        "host": "db-server-1",
+        "port": 5432,
+        "timeout": "30s",
+        "attempt": 3
+      },
+      "context": {
+        "userId": "user-12345",
+        "requestId": "req-67890"
+      }
+    },
+    "labels": {
+      "service": "api-service",
+      "environment": "production"
+    }
+  },
+  {
+    "severity": "WARNING",
+    "timestamp": "1645678901234",
+    "textPayload": "High memory usage detected: 85%",
+    "resource": {
+      "type": "gce_instance",
+      "labels": {
+        "instance_id": "123456789",
+        "zone": "us-central1-a",
+        "project_id": "my-project-123"
+      }
+    }
+  },
+  {
+    "severity": "DEBUG",
+    "timestamp": "2023-10-05T12:03:45.789Z",
+    "textPayload": "Processing request completed in 145ms",
+    "httpRequest": {
+      "userAgent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+    }
+  },
+  {
+    "severity": "INFO",
+    "timestamp": "2023-10-05T12:04:20.000Z",
+    "textPayload": "{\"action\": \"purchase\", \"amount\": 99.99, \"currency\": \"USD\", \"userId\": \"user-555\", \"items\": [\"product-a\", \"product-b\"]}",
+    "httpRequest": {
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15"
+    }
+  }
+]

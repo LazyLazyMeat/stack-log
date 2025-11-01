@@ -1,5 +1,4 @@
 #!/usr/bin/env dart
-
 /*
  * parser.dart - A command-line tool for parsing logs and extracting tokens.
  *
