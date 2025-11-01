@@ -1,10 +1,29 @@
 #!/usr/bin/env dart
 
+/*
+ * parser.dart - A command-line tool for parsing logs and extracting tokens.
+ *
+ * Copyright (C) 2025 Uvarov Oleg <uv.ol.al@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:google_cloud_log_parser/google_cloud_log_parser.dart';
-import 'package:google_cloud_log_parser/src/config.dart';
+import 'package:stack_log/stack_log.dart';
+import 'package:stack_log/src/config.dart';
 
 void main(List<String> arguments) {
   final config = ParserConfig.fromArgs(arguments);
@@ -78,9 +97,9 @@ void main(List<String> arguments) {
         }
 
         final Map<String, dynamic> jsonObject = {};
-        if (severity != null) jsonObject['Severity'] = severity;
-        if (userAgent != null) jsonObject['Agent'] = userAgent;
-        if (timestamp != null) jsonObject['Time'] = timestamp;
+        if (severity != null) jsonObject['severity'] = severity;
+        if (userAgent != null) jsonObject['agent'] = userAgent;
+        if (timestamp != null) jsonObject['time'] = timestamp;
         if (payloadString != null) jsonObject['log'] = payloadString;
 
         if (jsonObject.isNotEmpty) {

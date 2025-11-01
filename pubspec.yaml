@@ -1,4 +1,4 @@
-name: google_cloud_log_parser
+name: stack_log
 description: Parser for Google Cloud Logs with syntax highlighting
 version: 1.0.0
 
@@ -12,3 +12,15 @@ executables:
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
+
+homepage: https://github.com/LazyLazyMeat/stack-log
+repository: https://github.com/LazyLazyMeat/stack-log
+issue_tracker: https://github.com/LazyLazyMeat/stack-log/issues
+
+license: GPL-3.0
+
+topics:
+  - cli
+  - parser
+  - syntax-highlighting
+  - code-analysis
