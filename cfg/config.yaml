@@ -1,0 +1,25 @@
+# Log Parser Configuration
+
+input:
+  file: "input.json"
+  encoding: "utf-8"
+
+output:
+  directory: "output"
+  run_log_subdirectory: "run-logs"
+  create_timestamped_logs: true
+  clean_before_run: true
+
+processing:
+  user_agent_max_length: 12
+  timestamp_format: "DD.MM.YY HH:MM:SS:mmm"
+  auto_detect_json_payloads: true
+
+filters:
+  enabled: true
+  file: "cfg/filters.txt"
+
+highlighting:
+  severity_color: "blue"
+  timestamp_color: "green"
+  user_agent_color: "red"

@@ -35,13 +35,6 @@ String? formatTimestamp(String? timestampStr) {
   }
 }
 
-String shortenUserAgent(String userAgent) {
-  if (userAgent.length <= 12) {
-    return userAgent;
-  }
-  return '${userAgent.substring(0, 12)}...';
-}
-
 bool isJsonLike(String text) {
   final trimmedText = text.trim();
 

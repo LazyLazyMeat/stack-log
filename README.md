@@ -477,5 +477,3 @@ See the [LICENSE](LICENSE) file for the full text.
 * Translate all strings in source code to English
 * Consider localization implementation
 * Create Russian-language README
-* Move configuration to separate config file
-* Rename execution log to run.log (possibly move to logs folder and use timestamps for naming)

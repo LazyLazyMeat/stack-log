@@ -6,21 +6,43 @@ if exist "build\windows" rmdir /s /q "build\windows"
 
 mkdir "build\windows"
 
-echo Компиляция парсера...
-dart compile exe bin\parser.dart -o build\windows\parser.exe
+echo Compiling parser...
+dart compile exe bin\parser.dart -o build\windows\stacklog_parser.exe
 
-echo Компиляция подсветчика...
-dart compile exe bin\highlighter.dart -o build\windows\highlighter.exe
+echo Compiling highlighter...
+dart compile exe bin\highlighter.dart -o build\windows\stacklog_highlighter.exe
 
-echo Копирование input.json...
+echo Copying input.json...
 if exist "example\input.json" (
     copy "example\input.json" "build\windows\"
-    echo Файл input.json успешно скопирован
+    echo File input.json successfully copied
 ) else (
-    echo ВНИМАНИЕ: Файл example\input.json не найден!
+    echo WARNING: File example\input.json not found!
+)
+
+echo Creating cfg directory...
+mkdir "build\windows\cfg"
+
+echo Copying config.yaml...
+if exist "example\config.yaml" (
+    copy "example\config.yaml" "build\windows\cfg\"
+    echo File config.yaml successfully copied to cfg\
+) else (
+    echo WARNING: File example\config.yaml not found!
+)
+
+echo Copying filters.txt...
+if exist "example\filters.txt" (
+    copy "example\filters.txt" "build\windows\cfg\"
+    echo File filters.txt successfully copied to cfg\
+) else (
+    echo WARNING: File example\filters.txt not found!
 )
 
 echo Готово!
 echo.
-echo Исполняемые файлы и данные:
+echo Executable files and data:
 dir build\windows\
+echo.
+echo Configuration files:
+dir build\windows\cfg\

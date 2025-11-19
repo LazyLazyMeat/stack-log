@@ -1,0 +1,5 @@
+Starting new instance
+Default STARTUP
+Ready condition
+audit_log
+Health check

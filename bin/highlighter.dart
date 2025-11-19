@@ -19,16 +19,18 @@
  */
 
 import 'dart:io';
-import 'package:stack_log/stack_log.dart';
+
+import 'package:stack_log/src/console_colors.dart';
+import 'package:stack_log/src/log_highlighter.dart';
+import 'package:yaml/yaml.dart';
 
 void main(List<String> arguments) {
-  // Если нет аргументов, используем путь по умолчанию
+  final highlightConfig = _loadHighlightConfig();
+
   String filePath;
   if (arguments.isEmpty) {
-    // Пытаемся найти output.txt в папке output проекта
     filePath = 'output/output.txt';
 
-    // Проверяем существование файла
     final defaultFile = File(filePath);
     if (!defaultFile.existsSync()) {
       print('Файл по умолчанию не найден: $filePath');
@@ -44,7 +46,13 @@ void main(List<String> arguments) {
   }
 
   try {
-    LogHighlighter.highlightFile(filePath);
+    final highlighter = LogHighlighter(
+      severityColor: highlightConfig['severity_color']!,
+      timestampColor: highlightConfig['timestamp_color']!,
+      userAgentColor: highlightConfig['user_agent_color']!,
+    );
+
+    highlighter.highlightFile(filePath);
   } catch (e) {
     print('Ошибка: $e');
     print('');
@@ -54,6 +62,37 @@ void main(List<String> arguments) {
     print('  3. Файл содержит логи в правильном формате');
     exit(1);
   }
+}
+
+Map<String, ConsoleColors> _loadHighlightConfig() {
+  try {
+    final configFile = File('cfg/config.yaml');
+    if (configFile.existsSync()) {
+      final yamlContent = configFile.readAsStringSync();
+      final doc = loadYaml(yamlContent);
+
+      final highlighting = doc['highlighting'] as Map<dynamic, dynamic>?;
+      if (highlighting != null) {
+        return {
+          'severity_color': ConsoleColors.fromName(
+              highlighting['severity_color']?.toString() ?? 'blue'),
+          'timestamp_color': ConsoleColors.fromName(
+              highlighting['timestamp_color']?.toString() ?? 'green'),
+          'user_agent_color': ConsoleColors.fromName(
+              highlighting['user_agent_color']?.toString() ?? 'red'),
+        };
+      }
+    }
+  } catch (e) {
+    print(
+        'Предупреждение: не удалось загрузить настройки цветов из config.yaml: $e');
+  }
+
+  return {
+    'severity_color': ConsoleColors.blue,
+    'timestamp_color': ConsoleColors.green,
+    'user_agent_color': ConsoleColors.red,
+  };
 }
 
 void _printHelp() {
